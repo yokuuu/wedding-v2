@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<!-- fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lavishly+Yours&family=Lobster&family=WDXL+Lubrifont+TC&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- slider -->
+		<!-- <link rel="stylesheet" type="text/css" href="./src/base.css" /> -->
+		<!-- AOS -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<!-- lenis -->
+		<script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+		<script
+			src="https://static.elfsight.com/platform/platform.js"
+			async
+		></script>
+		<!-- swiper -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+		/>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<script defer type="module" src="/src/main.js"></script>
+		<title>Vite App</title>
+	</head>
+	<body>
+		<div class="preload">
+			<h1 class="preload__title">День Свадьбы</h1>
+			<h2 class="preload__subtitle">Даниил И Кристина</h2>
+			<span class="preload__span">Разблокируйте приглашение</span>
+			<video preload="auto" muted playsinline autoplay="autoplay" loop="loop">
+				<source
+					src="https://dl.dropboxusercontent.com/s/scl/fi/euhw3hpuhke1ux1q4hflr/video.MP4?rlkey=tyjjf8nrn1br1f13gmzdw6ak8&amp;dl=0"
+					type="video/mp4"
+				/>
+			</video>
+			<audio id="bgMusic" loop>
+				<source src="./img/faded.mp3" type="audio/mpeg" />
+				Ваш браузер не поддерживает аудио.
+			</audio>
+			<div class="slider">
+				<div class="slider-container">
+					<div class="slider-track"></div>
+					<div class="target-circle"></div>
+					<div
+						class="animate__animated animate__pulse animate__infinite infinite"
+					>
+						<div class="slider-thumb">
+							<span class="slider-thumb-span">&rsaquo;</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--  <div id="app"></div> -->
+		<div class="container content">
+			<section class="legend">
+				<div class="legend__container">
+					<div
+						class="legend__date"
+						data-aos="fade-down"
+						data-aos-duration="3000"
+					>
+						<span class="legend__date-item">23</span>
+						<span class="legend__date-item">08</span>
+						<span class="legend__date-item">25</span>
+					</div>
+					<h2
+						class="legend__subtitle"
+						data-aos="fade-right"
+						data-aos-duration="3000"
+					>
+						ДАТА СВАДЬБЫ
+					</h2>
+				</div>
+				<h1 class="legend__title">
+					<span
+						class="legend__title-item"
+						data-aos="fade-left"
+						data-aos-duration="3000"
+						>ДАНИИЛ</span
+					>
+					<span class="legend__title-item legend__title-item--symbol">&</span>
+					<span
+						class="legend__title-item"
+						data-aos="fade-right"
+						data-aos-duration="3000"
+						>КРИСТИНА</span
+					>
+				</h1>
+			</section>
+			<section class="polaroid__section">
+				<div class="polaroid__container">
+					<ul class="polaroid__list">
+						<li class="polaroid__item">
+							<div class="polaroid__photo polaroid__photo-1">
+								<div
+									class="polaroid__polaroid"
+									data-aos="fade-right"
+									data-aos-duration="3000"
+								>
+									<img class="polaroid__image" src="/img/polaroinOne.jpg" />
+								</div>
+							</div>
+							<div class="polaroid__descr">
+								<p
+									class="polaroid__text"
+									data-aos="fade-down"
+									data-aos-duration="3000"
+								>
+									<img
+										src="./img/textDecoration.png"
+										alt=""
+										class="polaroid__description-decoration rotate"
+										data-aos="fade-up"
+										data-aos-duration="2000"
+									/>
+									В нашей жизни предстоят перемены! Мы хотим, чтобы в этот день
+									рядом с нами были самые близкие и дорогие для нас люди.
+								</p>
+							</div>
+						</li>
+						<li class="polaroid__item">
+							<div class="polaroid__descr">
+								<p
+									class="polaroid__text"
+									data-aos="fade-right"
+									data-aos-duration="3000"
+								>
+									<img
+										src="./img/textDecorationMiddle.png"
+										alt=""
+										class="polaroid__description-decoration rotate"
+										data-aos="fade-up"
+										data-aos-duration="2000"
+									/>
+									Будем рады разделить с вами чудесный праздник в день нашей
+									свадьбы
+									<img
+										src="./img/textDecorationMiddle.png"
+										alt=""
+										class="polaroid__description-decoration"
+										data-aos="fade-up"
+										data-aos-duration="2000"
+									/>
+								</p>
+							</div>
+							<div class="polaroid__photo polaroid__photo-2">
+								<div
+									class="polaroid__polaroid"
+									data-aos="fade-down"
+									data-aos-duration="3000"
+								>
+									<img class="polaroid__image" src="/img/polariodTwo.jpg" />
+								</div>
+							</div>
+						</li>
+						<li class="polaroid__item">
+							<div class="polaroid__photo polaroid__photo-3">
+								<div
+									class="polaroid__polaroid"
+									data-aos="fade-right"
+									data-aos-duration="3000"
+								>
+									<img class="polaroid__image" src="/img/polaroidThree.jpg" />
+								</div>
+							</div>
+							<div class="polaroid__descr">
+								<p
+									class="polaroid__text"
+									data-aos="fade-up"
+									data-aos-duration="3000"
+								>
+									Надеемся, этот праздник принесет Вам массу положительных
+									эмоций и запомнится на долгое время.
+									<img
+										src="./img/textDecoration.png"
+										alt=""
+										class="polaroid__description-decoration"
+										data-aos="fade-down"
+										data-aos-duration="2000"
+									/>
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="invite">
+				<div class="invite__container">
+					<div class="ampersand">&</div>
+					<h2
+						class="invite__title"
+						data-aos="fade-down"
+						data-aos-duration="3000"
+					>
+						Дорогие Родные и Близкие!
+					</h2>
+					<h3
+						class="invite__subtitle"
+						data-aos="fade-right"
+						data-aos-duration="3000"
+					>
+						Приглашаем отпраздновать самое важное событие в нашей жизни - день
+						нашей свадьбы!
+					</h3>
+					<p class="invite__date" data-aos="fade-left" data-aos-duration="3000">
+						23.08.25
+					</p>
+					<p
+						class="invite__description"
+						data-aos="fade-right"
+						data-aos-duration="3000"
+					>
+						Мы будем рады видеть вас в кругу наших гостей !
+					</p>
+					<p class="invite__names">Даниил И Кристина</p>
+				</div>
+			</section>
+			<section class="location">
+				<div class="location__container">
+					<img src="./img/Flower.jpg" alt="" class="location__image" />
+					<h2
+						class="location__title"
+						data-aos="zoom-in"
+						data-aos-duration="3000"
+					>
+						Место Провидения
+					</h2>
+					<div
+						class="location__description"
+						data-aos="fade-up"
+						data-aos-duration="3000"
+					>
+						<span class="location__detail"> Ждем вас по адресу: </span>
+						<span class="location__address">
+							Омск, Отель "Турист", ул. Броз Тито, 2</span
+						>
+					</div>
+					<div class="location__map">
+						<span
+							class="location__map-description"
+							data-aos="fade-down"
+							data-aos-duration="3000"
+							>Для вашего удобства мы оставили координаты.</span
+						>
+					</div>
+					<button
+						class="slice"
+						onclick="window.open('https://tourist-omsk.ru/restaurants/zal-restorana-globus/', '_blank')"
+					>
+						<span class="text">Посмотреть на сайте</span>
+					</button>
+					<div class="page-wrap">
+						<div id="home-slider">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide swiper-slide-one">
+										<div class="swiper-image" data-swiper-parallax-y="-20%">
+											<div
+												class="swiper-image-inner swiper-image-left swiper-image-one"
+											>
+												<h1 class="swiper__title">
+													Ресторан<br /><span>"Глобус"</span>
+												</h1>
+												<p>Отель "Турист", ул. Броз Тито, 2</p>
+											</div>
+										</div>
+										<div class="swiper-image" data-swiper-parallax-y="35%">
+											<div
+												class="swiper-image-inner swiper-image-right swiper-image-two"
+											>
+												<p class="paragraph">
+													<button
+														class="swiper__button"
+														onclick="window.open('https://2gis.ru/omsk/firm/282003257694479', '_blank')"
+													>
+														Показать на карте
+													</button>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide swiper-slide-two">
+										<div class="swiper-image" data-swiper-parallax-y="-20%">
+											<div
+												class="swiper-image-inner swiper-image-left swiper-image-three"
+											>
+												<h1 class="swiper__title">
+													Ресторан<br /><span>"Глобус"</span>
+												</h1>
+												<p>Отель "Турист", ул. Броз Тито, 2</p>
+											</div>
+										</div>
+										<div class="swiper-image" data-swiper-parallax-y="35%">
+											<div
+												class="swiper-image-inner swiper-image-right swiper-image-four"
+											>
+												<p class="paragraph">
+													<button
+														class="swiper__button"
+														onclick="window.open('https://2gis.ru/omsk/firm/282003257694479', '_blank')"
+													>
+														Показать на карте
+													</button>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide swiper-slide-three">
+										<div class="swiper-image" data-swiper-parallax-y="-20%">
+											<div
+												class="swiper-image-inner swiper-image-left swiper-image-five"
+											>
+												<h1 class="swiper__title">
+													Ресторан<br /><span>"Глобус"</span>
+												</h1>
+												<p>Отель "Турист", ул. Броз Тито, 2</p>
+											</div>
+										</div>
+										<div class="swiper-image" data-swiper-parallax-y="35%">
+											<div
+												class="swiper-image-inner swiper-image-right swiper-image-six"
+											>
+												<p class="paragraph">
+													<button
+														class="swiper__button"
+														onclick="window.open('https://2gis.ru/omsk/firm/282003257694479', '_blank')"
+													>
+														Показать на карте
+													</button>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="swiper-pagination"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="timing">
+				<div class="timing__container">
+					<img src="./img/flower2.png" alt="timingImg" class="timing__image" />
+					<h2 class="timing__title">Расписание</h2>
+					<ul class="timing__list">
+						<li class="timing__item">
+							<span
+								class="timing__time"
+								data-aos="fade-down"
+								data-aos-duration="2000"
+								>12:00</span
+							>
+							<span
+								class="timing__name"
+								data-aos="fade-down"
+								data-aos-duration="3000"
+								>Начало</span
+							>
+						</li>
+						<li class="timing__item">
+							<span
+								class="timing__time"
+								data-aos="fade-down"
+								data-aos-duration="2000"
+								>16:00</span
+							>
+							<span
+								class="timing__name"
+								data-aos="fade-down"
+								data-aos-duration="3000"
+								>Церемония</span
+							>
+						</li>
+						<li class="timing__item">
+							<span
+								class="timing__time"
+								data-aos="fade-down"
+								data-aos-duration="2000"
+								>17:00</span
+							>
+							<span
+								class="timing__name"
+								data-aos="fade-down"
+								data-aos-duration="2000"
+								>Банкет</span
+							>
+						</li>
+						<li class="timing__item">
+							<span
+								class="timing__time"
+								data-aos="fade-down"
+								data-aos-duration="2000"
+								>23:00</span
+							>
+							<span
+								class="timing__name"
+								data-aos="fade-down"
+								data-aos-duration="2000"
+								>Финал</span
+							>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="dresscode">
+				<div class="dresscode__container">
+					<h2
+						class="dresscode__title"
+						data-aos="zoom-in"
+						data-aos-duration="3000"
+					>
+						Дресс-код
+					</h2>
+					<h3
+						class="dresscode__subtitle"
+						data-aos="zoom-in"
+						data-aos-duration="2000"
+					>
+						Мы очень старались сделать праздник красивым и будем рады, если в
+						своих нарядах Вы поддержите цветовую гамму нашей свадьбы:
+					</h3>
+					<div class="circles-container">
+						<div
+							class="circle circle-1"
+							data-aos="fade-down"
+							data-aos-duration="1000"
+						></div>
+						<div
+							class="circle circle-2"
+							data-aos="fade-down"
+							data-aos-duration="1500"
+						></div>
+						<div
+							class="circle circle-3"
+							data-aos="fade-down"
+							data-aos-duration="2000"
+						></div>
+						<div
+							class="circle circle-4"
+							data-aos="fade-down"
+							data-aos-duration="2500"
+						></div>
+						<div
+							class="circle circle-5"
+							data-aos="fade-down"
+							data-aos-duration="3000"
+						></div>
+					</div>
+				</div>
+			</section>
+			<section class="wishes">
+				<div class="wishes__container">
+					<h2 class="wishes__title">Пожелания</h2>
+					<img
+						src="./img/wishesFlowers.jpg"
+						alt="wishesImage"
+						class="wishes__image"
+					/>
+					<p class="wishes__description">
+						Денежные конверты будут лучшим подарком, который мы используем на
+						исполнение наших желаний.
+					</p>
+					<img
+						src="./img/wishesGlasses.jpg"
+						alt="wishesImage"
+						class="wishes__image"
+					/>
+					<p class="wishes__description">
+						Приятным комплиментов вместо цветов для нас будет бутылочка хорошего
+						алкоголя, которую мы откроем на ближайшем празднике.
+					</p>
+				</div>
+			</section>
+			<section class="form">
+				<div class="form__container">
+					<img src="./img/Flower.jpg" alt="" class="location__image" />
+					<form id="form" class="form__form">
+						<h2 class="form__title">Анкета</h2>
+						<h3 class="form__subtitle">Подтвердите участие</h3>
+						<div class="form__group">
+							<label for="userName" class="form__label">Ваше ФИО:</label>
+							<input
+								type="text"
+								id="userName"
+								class="form__input"
+								placeholder="Введите ваше ФИО"
+								required
+							/>
+						</div>
+						<h3 class="form__subtitle">
+							Вы сможете присутствовать на торжестве?
+						</h3>
+						<ul class="form__list">
+							<li class="form__item">
+								<input id="r1" type="radio" name="radio" value="Yes" />
+								<label for="r1" class="form__radiolabel">
+									Да, обязательно приду</label
+								>
+							</li>
+							<li class="form__item">
+								<input
+									id="r2"
+									type="radio"
+									name="radio"
+									value="No"
+									checked
+									required
+								/>
+								<label for="r2" class="form__radiolabel"
+									>К сожалению, не смогу прийти</label
+								>
+							</li>
+						</ul>
+						<button class="form__button" type="submit" id="submitBtn">
+							<div class="svg-wrapper-1">
+								<div class="svg-wrapper">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										width="24"
+										height="24"
+									>
+										<path fill="none" d="M0 0h24v24H0z"></path>
+										<path
+											fill="currentColor"
+											d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<span>Отправить</span>
+						</button>
+					</form>
+				</div>
+			</section>
+			<section class="timer">
+				<div class="timer__container">
+					<h2 class="timer__title">Мы Вас очень ждем!</h2>
+					<h3 class="timer__subtitle">до торжества осталось...</h3>
+					<div class="timer__clock" id="timer"></div>
+				</div>
+			</section>
+		</div>
+	</body>
+</html>

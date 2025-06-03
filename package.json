@@ -1,0 +1,22 @@
+{
+	"name": "wedding",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"host": "vite --host",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"vite": "^6.3.5"
+	},
+	"dependencies": {
+		"animate.css": "^4.1.1",
+		"animejs": "^4.0.2",
+		"aos": "^2.3.4",
+		"firebase": "^11.8.1",
+		"swiper": "^11.2.8"
+	}
+}

@@ -33,8 +33,6 @@ document.getElementById("form").addEventListener("submit", function (e) {
 	});
 });
 
-// checkbox
-
 // timer
 
 function updateTimer(targetDate, displayElement) {
@@ -81,6 +79,7 @@ const targetDate = new Date("2025-08-23T12:00:00").getTime();
 const timerDisplay = document.getElementById("timer");
 
 updateTimer(targetDate, timerDisplay);
+AOS.init();
 
 // scroll
 

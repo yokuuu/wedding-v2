@@ -7,6 +7,13 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: "MrsEavesRoman";
+	src: url("../fonts/mrs-eaves-roman.ttf") format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -96,8 +103,8 @@ h2 {
 /* legend */
 
 section.legend {
-	/* padding: 0; */
-	/* padding-top: 0; */
+	padding-top: 0;
+	padding-bottom: 64px;
 }
 
 .legend__container {
@@ -278,6 +285,78 @@ section.location {
 
 .location__title {
 	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* .location__title::before,
+.location__title::after {
+	content: "";
+	display: inline-block;
+	width: 100px;
+	height: 2px;
+	background-color: #000;
+	margin: 0 20px;
+	align-self: center;
+	justify-self: center;
+} */
+
+.location__title-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.location__line {
+	display: inline-block;
+	width: 100px;
+	height: 1px;
+	background-color: #000;
+	margin: 0 20px 24px 20px;
+}
+
+/* .polaroid__item:first-child {
+	background-image: url("https://optim.tildacdn.com/tild6264-6237-4333-b535-393361346639/-/resize/112x/-/format/webp/_3_2_1.png.webp");
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: center;
+} */
+
+.polaroid {
+	position: relative;
+}
+
+.polaroid__flowers {
+	position: absolute;
+	width: 450px;
+	height: 520px;
+	transform: rotate(45deg);
+	margin-left: -70px;
+}
+.polaroid__flowers-2 {
+	top: 1850px;
+	position: absolute;
+	width: 450px;
+	height: 520px;
+}
+.polaroid__flowers-3 {
+	top: 160%;
+	right: 0;
+	position: absolute;
+	width: 450px;
+	height: 520px;
+	transform: rotate(30deg);
+	margin-right: -100px;
+}
+
+.polaroid__flowers-4 {
+	top: 100%;
+	right: 0;
+	position: absolute;
+	width: 200px;
+	height: 117px;
+	margin-right: -30px;
+	transform: rotate(-60deg);
 }
 
 /* .location__title::after {
@@ -835,8 +914,8 @@ section.wishes {
 
 video {
 	object-fit: cover;
-	background-size: cover;
-	width: 100%;
+	background-size: contain;
+	width: 50%;
 	height: 100%;
 	position: absolute;
 	z-index: -100;
@@ -1199,7 +1278,7 @@ video {
 	/* align-self: center;
 	justify-self: flex-start; */
 	font-size: 24px;
-	font-family: "Playfair Display";
+	font-family: "MrsEavesRoman";
 	font-weight: 100;
 	padding: 0 32px;
 }
@@ -1237,11 +1316,18 @@ video {
 	display: block;
 }
 
+.polaroid__template-2 {
+	transform: scale(0.8, 0.8) rotate(-5deg);
+}
+
 .polaroid__image-container {
 	width: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+}
+.polaroid__image-container:nth-child(2) {
+	justify-content: flex-start;
 }
 
 .overlay-image {
@@ -2269,11 +2355,8 @@ button.swiper-pagination-bullet {
 	display: none; /* Скрываем основной контент до загрузки */
 }
 
-.lottie-controls {
-	display: none !important;
-}
 /* ... */
-/* From Uiverse.io by MuhammadHasann */
+
 button {
 	position: relative;
 	padding: 15px 45px;
@@ -2397,6 +2480,13 @@ button:hover .icon-3 {
 	transform: rotate(0);
 }
 
+.icon-test {
+	width: 100px;
+}
+.icon-test svg {
+	fill: gold;
+}
+
 @keyframes slay-3 {
 	0% {
 		transform: rotate(0deg);
@@ -2409,4 +2499,32 @@ button:hover .icon-3 {
 	100% {
 		transform: rotate(0);
 	}
+}
+
+.preload {
+	background-color: var(--mainColor);
+}
+
+#leaf {
+	position: absolute;
+	width: 50px;
+	height: auto;
+	top: -60px;
+	left: 50%;
+	transform-origin: 50% 50%;
+	pointer-events: none;
+	z-index: 1000;
+}
+
+.polaroid__text {
+	position: relative;
+}
+
+.polaroid__branch {
+	position: absolute;
+	top: 110%;
+	right: 31%;
+	width: 150px;
+	transform: rotate(30deg);
+	z-index: 100;
 }

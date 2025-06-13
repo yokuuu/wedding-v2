@@ -2,9 +2,20 @@
 	.container {
 		margin: 0;
 	}
+	.slider-container {
+		width: 350px;
+	}
+
+	.timer__container {
+		background-size: cover;
+		height: 75vh;
+	}
 }
 
 @media (max-width: 1199.98px) {
+	.legend {
+		height: 100vh;
+	}
 }
 
 @media (max-width: 991.98px) {
@@ -19,6 +30,95 @@
 
 	.form__form {
 		min-width: 80%;
+	}
+	video {
+		width: 100%;
+	}
+
+	.polaroid__container {
+		height: 100%;
+	}
+
+	.polaroid__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+
+	.polaroid__item:nth-child(2) {
+		flex-direction: column-reverse;
+	}
+
+	.polaroid__template {
+		max-width: 480px;
+	}
+
+	.polaroid__descr {
+		width: 70%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.polaroid__photo {
+		width: 70%;
+	}
+
+	.polaroid__image {
+		padding-bottom: 8px;
+	}
+
+	.polaroid__image-container {
+		justify-content: center;
+	}
+
+	.polaroid__image-container:nth-child(2) {
+		justify-content: center;
+	}
+
+	.invite__title {
+		text-align: center;
+	}
+
+	.location__title {
+		text-align: center;
+		font-size: 48px;
+	}
+
+	.timing__title,
+	.wishes__title,
+	.dresscode__title {
+		font-size: 48px;
+	}
+
+	.dresscode__subtitle,
+	.wishes__description {
+		font-size: 24px;
+	}
+
+	.location__line {
+		width: 64px;
+	}
+	.timer__container {
+		background-size: contain;
+		background-position: center;
+		background-color: var(--mainColor);
+		height: 75vh;
+	}
+
+	.timer__title {
+		font-size: 56px;
+	}
+
+	.timer__subtitle {
+		font-size: 32px;
+	}
+
+	.timer__item {
+		font-size: 48px;
 	}
 }
 
@@ -63,6 +163,23 @@
 	.target-circle {
 		width: 60px;
 		height: 60px;
+	}
+
+	.polaroid__image-container {
+		width: 100%;
+	}
+
+	.timer__title {
+		font-size: 38px;
+	}
+
+	.timer__subtitle {
+		font-size: 24px;
+	}
+
+	.timer__item,
+	.timer__item-description {
+		font-size: 32px;
 	}
 }
 
@@ -142,6 +259,7 @@
 	.preload__span {
 		text-align: center;
 		padding: 0 18px;
+		margin-bottom: 24px;
 	}
 
 	.slider-container {
@@ -314,6 +432,13 @@
 		font-size: 18px;
 	}
 
+	.timer__container {
+		height: 50vh;
+		background-size: contain;
+		background-color: var(--mainColor);
+		background-position: center;
+	}
+
 	.timer__title {
 		font-size: var(--titleFontSize);
 	}
@@ -386,5 +511,41 @@
 
 	.preload__span {
 		font-size: 18px;
+	}
+
+	.location__line {
+		width: 48px;
+		margin: 0 20px;
+	}
+	button {
+		font-size: 16px;
+	}
+
+	.polaroid__template {
+		max-width: 420px;
+	}
+
+	.polaroid__image-container {
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.polaroid__image-container:nth-child(2) {
+		justify-content: center;
+		align-items: center;
+	}
+
+	.legend {
+		height: 100vh;
+	}
+
+	.polaroid__text {
+		padding-left: calc(100vw / 15);
+		padding-right: calc(100vw / 15);
+	}
+
+	.preload__span {
+		margin-bottom: 32px;
 	}
 }

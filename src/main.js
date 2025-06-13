@@ -109,6 +109,7 @@ var mySwiper = new Swiper(".swiper-container", {
 	effect: "slide",
 	mousewheelControl: 1,
 });
+
 // sliderButton
 
 const thumb = document.querySelector(".slider-thumb");
@@ -116,13 +117,45 @@ const track = document.querySelector(".slider-track");
 const container = document.querySelector(".slider-container");
 const target = document.querySelector(".target-circle");
 let isDragging = false;
+let animationFrameId = null;
+let currentLeft = 0; // Текущая позиция в процентах
+let targetLeft = 0; // Целевая позиция в процентах
+const maxSpeed = 2; // Максимальная скорость перемещения в % за кадр
+
+// Функция плавного перемещения
+function smoothMove() {
+	// Вычисляем разницу между текущей и целевой позицией
+	const diff = targetLeft - currentLeft;
+
+	// Если разница очень маленькая, останавливаем анимацию
+	if (Math.abs(diff) < 0.1) {
+		currentLeft = targetLeft;
+		thumb.style.left = `${currentLeft}%`;
+		animationFrameId = null;
+		return;
+	}
+
+	// Ограничиваем скорость перемещения
+	const moveStep = Math.sign(diff) * Math.min(Math.abs(diff), maxSpeed);
+	currentLeft += moveStep;
+	thumb.style.left = `${currentLeft}%`;
+
+	// Проверяем достижение цели во время движения
+	if (currentLeft > 95 && checkTargetReached()) {
+		setTimeout(() => {
+			console.log("Цель достигнута во время движения!");
+		}, 100);
+	}
+
+	// Продолжаем анимацию
+	animationFrameId = requestAnimationFrame(smoothMove);
+}
 
 // Функция проверки достижения цели
 function checkTargetReached() {
 	const thumbRect = thumb.getBoundingClientRect();
 	const targetRect = target.getBoundingClientRect();
 
-	// Проверяем пересечение элементов
 	const isReached = !(
 		thumbRect.right < targetRect.left ||
 		thumbRect.left > targetRect.right ||
@@ -136,7 +169,13 @@ function checkTargetReached() {
 thumb.addEventListener("mousedown", e => {
 	isDragging = true;
 	thumb.style.cursor = "grabbing";
-	e.preventDefault(); // Предотвращаем выделение текста
+	e.preventDefault();
+
+	// Останавливаем текущую анимацию
+	if (animationFrameId) {
+		cancelAnimationFrame(animationFrameId);
+		animationFrameId = null;
+	}
 });
 
 document.addEventListener("mousemove", e => {
@@ -151,13 +190,17 @@ document.addEventListener("mousemove", e => {
 	newLeft = Math.max(trackRect.left - containerRect.left, newLeft);
 	newLeft = Math.min(trackRect.right - containerRect.left, newLeft);
 
-	// Обновляем позицию бегунка
-	const percent =
+	// Вычисляем процентное положение
+	targetLeft =
 		((newLeft - (trackRect.left - containerRect.left)) / trackRect.width) * 100;
-	thumb.style.left = `${percent}%`;
+
+	// Запускаем плавное движение
+	if (!animationFrameId) {
+		animationFrameId = requestAnimationFrame(smoothMove);
+	}
 
 	// Проверяем достижение цели
-	if (percent > 95 && checkTargetReached()) {
+	if (targetLeft > 95 && checkTargetReached()) {
 		setTimeout(() => {
 			console.log(1);
 		}, 100);
@@ -171,7 +214,6 @@ document.addEventListener("mouseup", () => {
 		const audio = document.getElementById("bgMusic");
 		audio.volume = 0.05;
 
-		// Финишная проверка при отпускании
 		if (checkTargetReached()) {
 			console.log(2);
 			document.querySelector(".preload").style.display = "none";
@@ -188,10 +230,15 @@ document.addEventListener("mouseup", () => {
 	}
 });
 
-// Добавляем обработчики для touch-событий
+// Touch события
 thumb.addEventListener("touchstart", e => {
 	isDragging = true;
 	e.preventDefault();
+
+	if (animationFrameId) {
+		cancelAnimationFrame(animationFrameId);
+		animationFrameId = null;
+	}
 });
 
 document.addEventListener("touchmove", e => {
@@ -206,12 +253,14 @@ document.addEventListener("touchmove", e => {
 	newLeft = Math.max(trackRect.left - containerRect.left, newLeft);
 	newLeft = Math.min(trackRect.right - containerRect.left, newLeft);
 
-	const percent =
+	targetLeft =
 		((newLeft - (trackRect.left - containerRect.left)) / trackRect.width) * 100;
-	thumb.style.left = `${percent}%`;
 
-	// Проверяем достижение цели
-	if (percent > 95 && checkTargetReached()) {
+	if (!animationFrameId) {
+		animationFrameId = requestAnimationFrame(smoothMove);
+	}
+
+	if (targetLeft > 95 && checkTargetReached()) {
 		setTimeout(() => {
 			console.log(3);
 		}, 100);
@@ -223,7 +272,7 @@ document.addEventListener("touchend", () => {
 		isDragging = false;
 		const audio = document.getElementById("bgMusic");
 		audio.volume = 0.05;
-		// Финишная проверка при отпускании
+
 		if (checkTargetReached()) {
 			document.querySelector(".preload").style.display = "none";
 			document.querySelector(".content").style.display = "block";

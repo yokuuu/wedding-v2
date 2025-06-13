@@ -1,6 +1,6 @@
 import "./style.css";
 import "./media.css";
-import { writeUserData, getUserData } from "./firebase";
+import { writeUserData } from "./firebase";
 
 //firebase
 document.getElementById("form").addEventListener("submit", function (e) {
@@ -18,19 +18,8 @@ document.getElementById("form").addEventListener("submit", function (e) {
 		.reverse()
 		.join("-");
 
-	let userId = localStorage.getItem("userUniqueId");
-
-	if (!userId) {
-		userId = "user_" + Math.random().toString(36).substring(2, 12);
-		localStorage.setItem("userUniqueId", userId);
-	}
-
-	getUserData(userId).then(userData => {
-		console.log("Данные пользователя:", userData);
-		if (userData) alert("Вы уже отправляли форму ранее!");
-		writeUserData(userId, textValue, agreementValue, timestamp);
-		alert("Данные успешно отправлены!");
-	});
+	writeUserData(textValue, agreementValue, timestamp);
+	alert("Данные успешно отправлены!");
 });
 
 // timer
@@ -142,9 +131,7 @@ function smoothMove() {
 
 	// Проверяем достижение цели во время движения
 	if (currentLeft > 95 && checkTargetReached()) {
-		setTimeout(() => {
-			console.log("Цель достигнута во время движения!");
-		}, 100);
+		setTimeout(() => {}, 100);
 	}
 
 	// Продолжаем анимацию
@@ -201,9 +188,7 @@ document.addEventListener("mousemove", e => {
 
 	// Проверяем достижение цели
 	if (targetLeft > 95 && checkTargetReached()) {
-		setTimeout(() => {
-			console.log(1);
-		}, 100);
+		setTimeout(() => {}, 100);
 	}
 });
 
@@ -215,7 +200,6 @@ document.addEventListener("mouseup", () => {
 		audio.volume = 0.05;
 
 		if (checkTargetReached()) {
-			console.log(2);
 			document.querySelector(".preload").style.display = "none";
 			document.querySelector(".content").style.display = "block";
 			AOS.init();
@@ -261,9 +245,7 @@ document.addEventListener("touchmove", e => {
 	}
 
 	if (targetLeft > 95 && checkTargetReached()) {
-		setTimeout(() => {
-			console.log(3);
-		}, 100);
+		setTimeout(() => {}, 100);
 	}
 });
 
@@ -284,7 +266,6 @@ document.addEventListener("touchend", () => {
 			} else {
 				audio.pause();
 			}
-			console.log(4);
 		}
 	}
 });

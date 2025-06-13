@@ -15,21 +15,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
-function writeUserData(userId, name, agreement, agreementDate) {
-	set(ref(db, "users/" + userId), {
+function writeUserData(name, agreement, agreementDate) {
+	set(ref(db, "users/" + name), {
 		username: name,
 		agreement: agreement,
 		date: agreementDate,
 	});
 }
 
-const userId = localStorage.getItem("userUniqueId");
-const userRef = ref(db, `users/${userId}`);
+// const userId = localStorage.getItem("userUniqueId");
+// const userRef = ref(db, `users/${userId}`);
 
-async function getUserData(userId) {
-	const db = getDatabase(app);
-	const snapshot = await get(userRef);
-	return snapshot.exists() ? snapshot.val() : null;
-}
+// async function getUserData(userId) {
+// 	const db = getDatabase(app);
+// 	const snapshot = await get(userRef);
+// 	return snapshot.exists() ? snapshot.val() : null;
+// }
 
-export { writeUserData, getUserData };
+export { writeUserData };

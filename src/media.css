@@ -1,3 +1,9 @@
+@media (min-width: 1500px) {
+	.center-image-wrapper {
+		display: none;
+	}
+}
+
 @media (max-width: 1399.98px) {
 	.container {
 		margin: 0;
@@ -233,6 +239,18 @@
 		--sectionPadding: 12px;
 	}
 
+	.polaroid__descr {
+		margin: -25px;
+	}
+
+	.form__image {
+		margin: -5px;
+	}
+
+	.circles-container {
+		margin-top: 0;
+	}
+
 	section:not(:last-child) {
 		padding: var(--sectionPadding) 0;
 		margin-bottom: 20px;
@@ -272,7 +290,7 @@
 	}
 
 	section.legend {
-		margin-bottom: 0;
+		margin-bottom: -100px;
 	}
 
 	.legend__container {
@@ -433,10 +451,22 @@
 	}
 
 	.timer__container {
-		height: 50vh;
+		height: 30vh;
 		background-size: contain;
 		background-color: var(--mainColor);
 		background-position: center;
+	}
+
+	.legend__corner-image {
+		width: 200px;
+	}
+
+	.center-image-wrapper {
+		margin-top: -130px;
+	}
+
+	.section-connector__image {
+		display: none;
 	}
 
 	.timer__title {

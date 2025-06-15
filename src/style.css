@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,500,500i,600,600i,700,700i |Cormorant+SC:400,500,600,700");
 
+html, body {
+	overflow-x: hidden;
+}
+
 @font-face {
 	font-family: "Felidae";
 	src: url("../fonts/Felidae.ttf") format("woff");
@@ -102,9 +106,67 @@ h2 {
 }
 /* legend */
 
+.legend__corner-image {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: scaleX(-1);
+	width: 500px;
+	height: auto;
+	z-index: 100;
+	pointer-events: none;
+}
+
+.legend__leaf-1 {
+	position: absolute;
+	top: 0;
+	left: 20%;
+	width: 50px;
+	height: auto;
+	pointer-events: none;
+	z-index: 2;
+
+	animation: fall 20s linear infinite;
+	opacity: 1;
+}
+
+.legend__leaf-2 {
+	position: absolute;
+	top: 0;
+	left: 70%;
+	width: 50px;
+	height: auto;
+	pointer-events: none;
+	z-index: 2;
+
+	animation: fall 40s linear infinite;
+	opacity: 1;
+}
+
+@keyframes fall {
+	0% {
+		transform: translate(-50%, -100px) rotate(0deg);
+		opacity: 1;
+	}
+	70% {
+		transform: translate(-60%, 70vh) rotate(240deg);
+		opacity: 0.6;
+	}
+	90% {
+		transform: translate(-40%, 90vh) rotate(300deg);
+		opacity: 0;
+	}
+	100% {
+		transform: translate(-50%, 100vh) rotate(360deg);
+		opacity: 0;
+	}
+}
+
 section.legend {
 	padding-top: 0;
-	padding-bottom: 64px;
+	padding-bottom: 0;
+	position: relative;
+	overflow: hidden;
 }
 
 .legend__container {
@@ -113,6 +175,7 @@ section.legend {
 	flex-direction: column;
 	gap: 50px;
 	margin-top: var(--mainFontSize);
+	margin-bottom: 0;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-rows: repeat(2, 1fr);
@@ -281,6 +344,38 @@ section.location {
 	max-width: 150px;
 	margin: 40px 0;
 	padding-bottom: 32px;
+}
+
+.center-image-wrapper {
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: -170px; /* регулируйте по высоте перекрытия */
+	z-index: 2;
+}
+
+.center-image {
+	max-width: 200px; /* или нужный размер */
+	height: auto;
+}
+
+.section-connector {
+	position: relative;
+	height: 1px;
+	z-index: 2;
+}
+
+.section-connector__image {
+	position: absolute;
+	top: 0;
+	left: -300px; /* выталкиваем за левый край — подбери значение под нужную часть */
+	height: auto;
+	width: 600px; /* или auto, если используешь height */
+	transform: rotate(-45deg); /* Поворачиваем на 90 градусов против часовой стрелки */
+	transform-origin: top left; /* задаёт точку поворота */
+	z-index: 2;
+	pointer-events: none;
 }
 
 .location__title {
@@ -472,7 +567,7 @@ section.location {
 	content: "";
 	display: inline-block;
 	width: 2px;
-	height: 75px;
+	height: 30px;
 	background-color: #2a2a2a;
 	vertical-align: middle;
 	margin-top: -200px;
@@ -730,6 +825,7 @@ section.wishes {
 
 .wishes__container {
 	display: flex;
+	margin-top: -20px;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;

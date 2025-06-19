@@ -124,7 +124,7 @@ h2 {
 	width: 50px;
 	height: auto;
 	pointer-events: none;
-	z-index: 2;
+	z-index: -228;
 
 	animation: fall 20s linear infinite;
 	opacity: 1;
@@ -137,10 +137,8 @@ h2 {
 	width: 50px;
 	height: auto;
 	pointer-events: none;
-	z-index: 2;
-
+	z-index: 0;
 	animation: fall 40s linear infinite;
-	opacity: 1;
 }
 
 @keyframes fall {
@@ -363,7 +361,7 @@ section.location {
 .section-connector {
 	position: relative;
 	height: 1px;
-	z-index: 2;
+	z-index: -10;
 }
 
 .section-connector__image {

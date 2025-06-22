@@ -805,7 +805,7 @@
             sliderThumb.style.left = currentX + 'px';
 
             // Проверяем, достиг ли ползунок цели (80% ширины)
-            if (currentX >= sliderWidth * 0.95 && !isUnlocked) {
+            if (currentX >= sliderWidth * 0.99 && !isUnlocked) {
                 unlockPage();
             }
 
@@ -872,29 +872,6 @@
 
             // Воспроизводим музыку (с обработкой ошибок)
             const playPromise = bgMusic.play();
-
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log('Автовоспроизведение аудио заблокировано:', error);
-                    // Показываем кнопку для ручного запуска музыки
-                    const musicBtn = document.createElement('button');
-                    musicBtn.textContent = 'Включить музыку';
-                    musicBtn.style.position = 'fixed';
-                    musicBtn.style.bottom = '20px';
-                    musicBtn.style.right = '20px';
-                    musicBtn.style.zIndex = '1000';
-                    musicBtn.style.padding = '10px 20px';
-                    musicBtn.style.background = 'var(--mainColor)';
-                    musicBtn.style.color = 'white';
-                    musicBtn.style.border = 'none';
-                    musicBtn.style.borderRadius = '20px';
-                    musicBtn.addEventListener('click', () => {
-                        bgMusic.play();
-                        musicBtn.remove();
-                    });
-                    document.body.appendChild(musicBtn);
-                });
-            }
 
             // Удаляем preload-экран после анимации
             setTimeout(() => {

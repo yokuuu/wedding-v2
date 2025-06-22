@@ -57,9 +57,7 @@
         <div class="slider-container">
             <div class="slider-track"></div>
             <div class="target-circle"></div>
-            <div
-                    class="animate__animated animate__pulse animate__infinite infinite animate__target"
-            >
+            <div class="animate__animated animate__pulse animate__infinite infinite animate__target">
                 <div class="slider-thumb">
                     <span class="slider-thumb-span">&rsaquo;</span>
                 </div>
@@ -690,7 +688,7 @@
 </div>
 </body>
 <script>
-    const API_URL = 'http://localhost:8888/submit';
+    const API_URL = '/submit';
 
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('form');
@@ -725,6 +723,243 @@
                 console.error(error);
             }
         });
+    });
+</script>
+<script>
+    // Новый улучшенный скрипт для разблокировки
+    document.addEventListener('DOMContentLoaded', function() {
+        const preload = document.querySelector('.preload');
+        const content = document.querySelector('.content');
+        const sliderThumb = document.querySelector('.slider-thumb');
+        const sliderTrack = document.querySelector('.slider-track');
+        const targetCircle = document.querySelector('.target-circle');
+        const forceUnlockBtn = document.getElementById('forceUnlock');
+        const bgMusic = document.getElementById('bgMusic');
+
+        let isUnlocked = false;
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let sliderWidth = 0;
+
+        // Инициализация слайдера
+        function initSlider() {
+            sliderWidth = sliderTrack.offsetWidth;
+
+            // Обработчики для мыши
+            sliderThumb.addEventListener('mousedown', startDrag);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', endDrag);
+
+            // Обработчики для тач-устройств
+            sliderThumb.addEventListener('touchstart', handleTouchStart);
+            document.addEventListener('touchmove', handleTouchMove);
+            document.addEventListener('touchend', handleTouchEnd);
+
+            // Кнопка fallback
+            forceUnlockBtn.addEventListener('click', unlockPage);
+
+            // Автоматическая разблокировка через 15 секунд (на крайний случай)
+            setTimeout(() => {
+                if (!isUnlocked) {
+                    console.log('Автоматическая разблокировка');
+                    unlockPage();
+                }
+            }, 15000);
+        }
+
+        function startDrag(e) {
+            isDragging = true;
+            startX = e.clientX - sliderThumb.offsetLeft;
+            document.body.style.cursor = 'grabbing';
+            sliderThumb.style.cursor = 'grabbing';
+            e.preventDefault();
+        }
+
+        function handleTouchStart(e) {
+            const touch = e.touches[0];
+            startX = touch.clientX - sliderThumb.offsetLeft;
+            isDragging = true;
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            currentX = e.clientX - startX;
+            updateSliderPosition();
+        }
+
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            const touch = e.touches[0];
+            currentX = touch.clientX - startX;
+            updateSliderPosition();
+            e.preventDefault();
+        }
+
+        function updateSliderPosition() {
+            // Ограничиваем движение в пределах трека
+            currentX = Math.max(0, Math.min(currentX, sliderWidth));
+
+            // Обновляем позицию ползунка
+            sliderThumb.style.left = currentX + 'px';
+
+            // Проверяем, достиг ли ползунок цели (80% ширины)
+            if (currentX >= sliderWidth * 0.95 && !isUnlocked) {
+                unlockPage();
+            }
+
+            // Подсвечиваем цель, когда ползунок близко
+            if (currentX >= sliderWidth * 0.7) {
+                targetCircle.classList.add('active');
+            } else {
+                targetCircle.classList.remove('active');
+            }
+        }
+
+        function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            document.body.style.cursor = '';
+            sliderThumb.style.cursor = '';
+
+            // Если не разблокировано, возвращаем ползунок
+            if (!isUnlocked) {
+                resetSlider();
+            }
+        }
+
+        function handleTouchEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+
+            if (!isUnlocked) {
+                resetSlider();
+            }
+        }
+
+        function resetSlider() {
+            // Плавный возврат ползунка
+            const animationDuration = 300; // 0.3 секунды
+            const startTime = performance.now();
+            const startPos = currentX;
+
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / animationDuration, 1);
+
+                currentX = startPos * (1 - progress);
+                sliderThumb.style.left = currentX + 'px';
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        function unlockPage() {
+            if (isUnlocked) return;
+            isUnlocked = true;
+
+            // Плавное скрытие preload-экрана
+            preload.style.opacity = '0';
+            preload.style.transition = 'opacity 0.5s ease';
+
+            // Показываем основной контент
+            content.style.display = 'block';
+
+            // Воспроизводим музыку (с обработкой ошибок)
+            const playPromise = bgMusic.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Автовоспроизведение аудио заблокировано:', error);
+                    // Показываем кнопку для ручного запуска музыки
+                    const musicBtn = document.createElement('button');
+                    musicBtn.textContent = 'Включить музыку';
+                    musicBtn.style.position = 'fixed';
+                    musicBtn.style.bottom = '20px';
+                    musicBtn.style.right = '20px';
+                    musicBtn.style.zIndex = '1000';
+                    musicBtn.style.padding = '10px 20px';
+                    musicBtn.style.background = 'var(--mainColor)';
+                    musicBtn.style.color = 'white';
+                    musicBtn.style.border = 'none';
+                    musicBtn.style.borderRadius = '20px';
+                    musicBtn.addEventListener('click', () => {
+                        bgMusic.play();
+                        musicBtn.remove();
+                    });
+                    document.body.appendChild(musicBtn);
+                });
+            }
+
+            // Удаляем preload-экран после анимации
+            setTimeout(() => {
+                preload.style.display = 'none';
+            }, 500);
+
+            // Инициализируем анимации и другие скрипты
+            initAnimations();
+        }
+
+        function initAnimations() {
+            // Инициализация AOS и других анимаций
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true
+                });
+            }
+
+            // Инициализация таймера
+            initTimer();
+        }
+
+        function initTimer() {
+            // Код таймера остается без изменений
+            // ...
+        }
+
+        // Запускаем слайдер
+        initSlider();
+
+        // Добавляем стиль для активной цели
+        const style = document.createElement('style');
+        style.textContent = `
+        .target-circle.active {
+            opacity: 0.7;
+            transform: translate(50%, -50%) scale(1.1);
+            transition: all 0.3s ease;
+        }
+        .fallback-button {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid white;
+            color: white;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 1s ease 3s;
+        }
+        .fallback-button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    `;
+        document.head.appendChild(style);
+
+        // Показываем кнопку fallback через 5 секунд
+        setTimeout(() => {
+            forceUnlockBtn.style.opacity = '1';
+        }, 5000);
     });
 </script>
 </html>
